@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/nsmtechdev/desafio-go-bases/internal/tickets"
+	"github.com/nsmtechdev/vuelos/internal/tickets"
 )
 
 func main() {

@@ -1,3 +1,3 @@
-module github.com/nsmtechdev/GoParcial
+module vuelos
 
 go 1.20

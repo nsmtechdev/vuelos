@@ -2,12 +2,8 @@ package reader
 
 import(
 	"os"
-	
-	//"fmt"
 	"log"
-	//"vuelos/tickets"
 	"encoding/csv"
-
 )
 
 type Ticket struct {

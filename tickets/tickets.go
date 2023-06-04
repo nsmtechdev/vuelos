@@ -7,7 +7,6 @@ import (
 	"log"
 	"strconv"
 	"vuelos/reader"
-	//"errors"
 )
 ///////////////////////////////////Ej1
 
@@ -59,7 +58,7 @@ var total float64
 		if i > 0  {
 			if linea[3] != id{
 				if err != nil {
-					fmt.Println("Debe ser un vuelo de LAPA")
+					fmt.Println("Debe ser un vuelo de LAPA del dia")
 			continue
 			}}
 				if linea[3] == id {
@@ -80,18 +79,18 @@ const (
 	noite = "noite"
 )
 
-func GetCountbyPeriod(ch chan string, tipo string ) (int, error) {
+func GetCountbyPeriod( periodo string ) (int, error) {
 	var totalTime int
-	switch tipo {
+	switch periodo {
 	
 	case madrugada:
 			
 		for _, ticket := range reader.ListaDeTicketes {
 			horaM, err := strconv.Atoi(strings.Split(ticket.Hora, ":")[0])
 			if err != nil {
-			panic("no pude splitear o transfomrar a int ")}
+			panic("no pude splitear o transfomrar a int madrugada ")}
 				if horaM >= 0 && horaM <= 6  {
-					totalTime += 1}		}	
+					totalTime += 1}		}
 	return int(totalTime), nil
 	
 	case maniana:
@@ -99,7 +98,8 @@ func GetCountbyPeriod(ch chan string, tipo string ) (int, error) {
 	for _, ticket := range reader.ListaDeTicketes {
 		horaM, err := strconv.Atoi(strings.Split(ticket.Hora, ":")[0])
 		if err != nil {
-		panic("no pude splitear o transfomrar a int ")}
+		panic("no pude splitear o transfomrar a int maniana ")}
+		
 			if horaM >= 7 && horaM <= 12  {
 				totalTime += 1}		}
 return int(totalTime), nil
@@ -109,24 +109,22 @@ return int(totalTime), nil
 	for _, ticket := range reader.ListaDeTicketes {
 		horaM, err := strconv.Atoi(strings.Split(ticket.Hora, ":")[0])
 		if err != nil {
-		panic("no pude splitear o transfomrar a int ")}
+		panic("no pude splitear o transfomrar a int tarde ")}
 			if horaM >= 13 && horaM <= 19  {
 				totalTime += 1}		}
-return int(totalTime), nil
+				return int(totalTime), nil
 
 	case noite:
 			
 	for _, ticket := range reader.ListaDeTicketes {
 		horaM, err := strconv.Atoi(strings.Split(ticket.Hora, ":")[0])
 		if err != nil {
-		panic("no pude splitear o transfomrar a int ")}
+		panic("no pude splitear o transfomrar a int noite ")}
 			if horaM >= 20 && horaM <= 23  {
 				totalTime += 1}		}
-	return int(totalTime), nil
-	}
-	ch <- fmt.Sprintf("hay  %d pasajeros en el periodo  %s", totalTime, tipo)
-return int(totalTime), nil
+				return int(totalTime), nil}
 
+return int(totalTime), nil
 }
 
-///////////////////////////////
+///////////////////////////////////////////////////////////

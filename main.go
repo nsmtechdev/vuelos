@@ -3,67 +3,46 @@ package main
 import (
 	"fmt"
 	"vuelos/tickets"
-	//"log"
 	"vuelos/reader"
-	"math"
+	"time"
+	
+	
 )
 
 func main() {
 
 /////////////////////////
 ch := make(chan string)
-//x := 1.5
-//	error := math.Erf(x)
-//	fmt.Println(error)
-//x := 0.8
-//error := math.Erf(x)
-//fmt.Printf("El resultado de la función de error para x = %.2f es %.6f\n", x, error)
+
+
 
 	 reader.ReaderTickets()
 	///////////////////////////////////////
 	
-	/*go totalTicketes, err := tickets.GetTotalTickets(ch, "Brazil")
-	 if err != nil {
-		log.Fatal("Vuelo de LAPA")
-	}*/
-
-	//go tickets.GetTotalTickets(ch, "Brazil")
 	
-/*
-	fmt.Println("el total de viajes al pais es", totalTicketes)	   
-	//////////////////////////////
+	go tickets.GetTotalTickets(ch, "Brazil")
 	
-	 totalTicketes1, err := tickets.GetTotalPorDia("Brazil")
-	if err != nil {
-	   log.Fatal("Vuelo de LAPA")
-   }
- 
-   fmt.Println("el total de viajes al pais es", totalTicketes1)
-*/
+/////////////////////////////////////////////
 
-
-// go tickets.GetTotalPorDia(ch, "Brazil")
+ go tickets.GetTotalPorDia(ch, "Brazil")
    	
  
 //////////////////////////////////////////////////
-    /*
-   totalTime, err := tickets.GetCountbyPeriod("maniana")
-   if err != nil {
-	  log.Fatal("error en el horario")
-   }
-  fmt.Println("el total de viajes en la fraja horario es", totalTime)
- */
- /*
-  fmt.Println(<-ch)
-	fmt.Println(<-ch)
-	fmt.Println(<-ch)
-*/
-tickets.GetCountbyPeriod(ch, "noite")
- 
-fmt.Println(<-ch)
-//fmt.Println(<-ch)
-//fmt.Println(<-ch)
-} 
    
-
-
+periodo := "noite"
+go func() {
+	for {
+		
+		totalTime, err := tickets.GetCountbyPeriod(periodo)
+		if err != nil {
+			fmt.Println("Error:", err)
+		}
+		fmt.Printf("Total de viaje en la %s es de: %d\n", periodo, totalTime)
+		time.Sleep(time.Second)
+		
+	}
+	
+}()
+fmt.Println(<-ch)
+fmt.Println(<-ch)
+}

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/nsmtechdev/vuelos/internal/tickets"
+	"github.com/nsmtechdev/GoParcial/internal/tickets"
 )
 
 func main() {

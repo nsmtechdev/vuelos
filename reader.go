@@ -1,4 +1,4 @@
-package reader
+/*package reader
 
 import (
 	"encoding/json"
@@ -38,5 +38,5 @@ for _, row := range rawData {
 	Country string
 	Time    string
 	Price  string
-}*/
 }
+}*/

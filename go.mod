@@ -1,3 +1,3 @@
-module github.com/nsmtechdev/vuelos
+module github.com/nsmtechdev/GoParcial
 
 go 1.20

@@ -5,7 +5,6 @@ import(
 	"log"
 	"encoding/csv"
 )
-
 type Ticket struct {
 	ID      string
 	Nombre  string
@@ -21,7 +20,7 @@ rawData, err := os.Open("./tickets.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
-	 
+
 	//data := strings.Split(string(rawData), "\n")
 	
 	data, err:= csv.NewReader(rawData).ReadAll()
@@ -29,7 +28,6 @@ rawData, err := os.Open("./tickets.csv")
 		log.Fatal(err)
 	}
 	//fmt.Println(data)
-	
 
 	for _, linea := range data {
 		ListaDeTicketes = append(ListaDeTicketes, Ticket{
@@ -38,6 +36,7 @@ rawData, err := os.Open("./tickets.csv")
 		Mail:    linea[2],
 		Pais:	 linea[3],
 		Hora:    linea[4],
-		Precio:  linea[5],})}
-		}
-		
+		Precio:  linea[5],
+		})
+	}
+}

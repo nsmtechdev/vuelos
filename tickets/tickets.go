@@ -32,14 +32,12 @@ func GetTotalTickets(ch chan string , id string) (int, error) {
 				}
 	}
 		if total == 0 {
-			ch <- fmt.Sprintf("sin pasajeros pa el vuelo: %s", id)}
+			ch <- fmt.Sprintf("Sin pasajeros pa el vuelo: %s", id)}
 		
 			if total >= 1 {
-		ch <- fmt.Sprintf("hay %f pasajeros en destino a %s", total, id)}
-
-
+		ch <- fmt.Sprintf("Actualmente hay %.0f pasajeros con destino a %s.", total, id)
+	}
 return int(total), nil
-
 }
 
 /////////////////////////////////////////////////////////////////////// Ej3
@@ -66,7 +64,7 @@ var total float64
 						}
 	}
 var	porcentaje = (float64(total) * 100.0 )/ float64(len(data))
-ch <- fmt.Sprintf("el porcentaje de vuelos a %s es de %.2f", id, porcentaje)
+ch <- fmt.Sprintf("El porcentaje de vuelos con destino a %s es de %.2f%%.", id, porcentaje)
 
 return int(porcentaje), nil
 }
@@ -88,7 +86,7 @@ func GetCountbyPeriod( periodo string ) (int, error) {
 		for _, ticket := range reader.ListaDeTicketes {
 			horaM, err := strconv.Atoi(strings.Split(ticket.Hora, ":")[0])
 			if err != nil {
-			panic("no pude splitear o transfomrar a int madrugada ")}
+			panic("No pude splitear o transformar a int madrugada ")}
 				if horaM >= 0 && horaM <= 6  {
 					totalTime += 1}		}
 	return int(totalTime), nil
@@ -98,7 +96,7 @@ func GetCountbyPeriod( periodo string ) (int, error) {
 	for _, ticket := range reader.ListaDeTicketes {
 		horaM, err := strconv.Atoi(strings.Split(ticket.Hora, ":")[0])
 		if err != nil {
-		panic("no pude splitear o transfomrar a int maniana ")}
+		panic("No pude splitear o transformar a int maniana ")}
 		
 			if horaM >= 7 && horaM <= 12  {
 				totalTime += 1}		}
@@ -109,7 +107,7 @@ return int(totalTime), nil
 	for _, ticket := range reader.ListaDeTicketes {
 		horaM, err := strconv.Atoi(strings.Split(ticket.Hora, ":")[0])
 		if err != nil {
-		panic("no pude splitear o transfomrar a int tarde ")}
+		panic("No pude splitear o transformar a int tarde ")}
 			if horaM >= 13 && horaM <= 19  {
 				totalTime += 1}		}
 				return int(totalTime), nil
@@ -119,12 +117,9 @@ return int(totalTime), nil
 	for _, ticket := range reader.ListaDeTicketes {
 		horaM, err := strconv.Atoi(strings.Split(ticket.Hora, ":")[0])
 		if err != nil {
-		panic("no pude splitear o transfomrar a int noite ")}
+		panic("No pude splitear o transformar a int noite ")}
 			if horaM >= 20 && horaM <= 23  {
 				totalTime += 1}		}
 				return int(totalTime), nil}
-
-return int(totalTime), nil
+				return int(totalTime), nil
 }
-
-///////////////////////////////////////////////////////////

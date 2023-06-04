@@ -5,8 +5,7 @@ import (
 	"vuelos/tickets"
 	//"log"
 	"vuelos/reader"
-//	"math"
-	
+	"math"
 )
 
 func main() {
@@ -16,7 +15,9 @@ ch := make(chan string)
 //x := 1.5
 //	error := math.Erf(x)
 //	fmt.Println(error)
-
+//x := 0.8
+//error := math.Erf(x)
+//fmt.Printf("El resultado de la función de error para x = %.2f es %.6f\n", x, error)
 
 	 reader.ReaderTickets()
 	///////////////////////////////////////

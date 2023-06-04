@@ -27,15 +27,15 @@ func main() {
    fmt.Println("el total de viajes al pais es", totalTicketes1)
 
     
-
-
-
-	totalTime, err :=
-	 tickets.GetMornings("maniana")
-	if err != nil {
-	   log.Fatal("error en el horario")
+   totalTime, err := tickets.GetCountbyPeriod("maniana")
+   if err != nil {
+	  log.Fatal("error en el horario")
    }
-   fmt.Println("el total de viajes en la fraja horario es", totalTime)
+  fmt.Println("el total de viajes en la fraja horario es", totalTime)
  
- 
-   } 
+  
+
+  } 
+   
+
+

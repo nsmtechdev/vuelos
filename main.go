@@ -5,7 +5,7 @@ import (
 	"vuelos/tickets"
 	//"log"
 	"vuelos/reader"
-	
+//	"math"
 	
 )
 
@@ -13,7 +13,9 @@ func main() {
 
 /////////////////////////
 ch := make(chan string)
-
+//x := 1.5
+//	error := math.Erf(x)
+//	fmt.Println(error)
 
 
 	 reader.ReaderTickets()
